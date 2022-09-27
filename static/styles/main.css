@@ -1,0 +1,99 @@
+/* rgb(53 51 52) */
+
+body {
+    margin: 0;
+    border: 0;
+    color: white;
+    background-image: url("../images/bg-pic-1.jpg");
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.full-container {
+    position: relative;
+    overflow-wrap: normal;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.navbar {
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    padding: 0.125rem 0.25rem;
+    background-color: rgb(255, 58, 91);
+    align-items: center;
+    height: 2.6rem;
+}
+
+.navbar>legend {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.nav-items {
+    margin-left: auto;
+    display: flex;
+    font-weight: 600;
+    align-items: center;
+    justify-self: end;
+    font-size: 1.125rem;
+}
+
+.nav-items>a {
+    padding: 0.4rem;
+    margin-right: 0.3rem;
+    /* margin-top: 0.125rem; */
+    /* border: 0.5rem solid rgb(255, 58, 91); */
+    color: rgb(255, 58, 91);
+    background-color: white;
+    border-radius: 0.5rem;
+}
+
+.nav-items>a:hover {
+    padding: 0.2rem;
+    border: 0.2rem solid white;
+    color: white;
+    background-color: rgb(255, 58, 91);
+    border-radius: 0.5rem;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10%;
+    font-size: 1.35rem;
+    font-weight: 600;
+    padding: 4% 14%;
+    color: white;
+}
+
+.container-card {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    border: 0.5rem solid whitesmoke;
+    margin: 0.5rem;
+    border-radius: 0.6rem;
+    background-color: rgb(255, 58, 91);
+    padding: 2rem;
+}
+
+img {
+    height: 20vh;
+}
+
+
+
+@media screen and (max-width: 900px) {
+    .container {
+        grid-template-columns: auto;
+        padding: 9% 5%; 
+    }
+
+    .disappear {
+        display: none;
+    }
+}
