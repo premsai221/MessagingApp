@@ -7,6 +7,11 @@ body {
     background-position: center; */
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
 .navbar {
     display: flex;
     font-family: 'Montserrat', sans-serif;
@@ -19,6 +24,7 @@ body {
 .navbar>legend {
     font-weight: 700;
     font-size: 1.5rem;
+    color: white;
 }
 
 .nav-items {
@@ -30,32 +36,69 @@ body {
     font-size: 1.125rem;
 }
 
+.nav-items>a {
+    padding: 0.4rem;
+    margin-right: 0.3rem;
+    /* margin-top: 0.125rem; */
+    /* border: 0.5rem solid rgb(255, 58, 91); */
+    color: rgb(255, 58, 91);
+    background-color: white;
+    border-radius: 0.5rem;
+}
+
+.nav-items>a:hover {
+    padding: 0.2rem;
+    border: 0.2rem solid white;
+    color: white;
+    background-color: rgb(255, 58, 91);
+    border-radius: 0.5rem;
+}
+
 .form-container {
-    display: grid;
-    grid-template-columns: 20% 60% 20%;
+    display: flex;
+    flex-direction: column;
     height: 30rem;
     background-color: rgb(255, 58, 91);
     margin: 3rem 20%;
     border-radius: 20px;
+    justify-content: center;
 }
 
 .form-input-group {
     align-items: center;
-    display: grid;
-    grid-template-columns: 20% 80%;
-    padding: 30% 0;
-    font-size: 1.25rem;
+    display: flex;
+    font-size: 1.4rem;
+    justify-content: center;
+    margin: 1rem auto;
 }
 
 .form-input-group > input {
+    flex-grow: 1;
     height: 40px;
     border: 10px solid white;
     border-radius: 10px;
     font-size: 1rem;
-    color: rgb(255, 58, 91);
+    color: black;
 }
 
 .form-input-group > label {
+    flex-grow: 1;
     text-align: end;
     padding-right: 4%;
+}
+
+.login-submit-btn {
+    width: 8rem;
+    padding: 0.5rem 0;
+    border: 0.2rem solid white;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: rgb(255, 58, 91);
+    background-color: white;
+    font-weight: 600;
+}
+
+.login-submit-btn:hover {
+    background-color: rgb(255, 58, 91);
+    color: white;
 }

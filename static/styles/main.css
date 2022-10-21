@@ -5,6 +5,7 @@ body {
     border: 0;
     color: white;
     background-image: url("../images/bg-pic-1.jpg");
+    background-size: 100%;
     background-attachment: fixed;
     background-position: center;
 }
@@ -67,17 +68,17 @@ a {
     font-size: 1.35rem;
     font-weight: 600;
     padding: 4% 14%;
-    color: white;
+    color: rgb(255, 58, 91);
 }
 
 .container-card {
     display: grid;
     grid-template-columns: auto auto;
     align-items: center;
-    border: 0.5rem solid whitesmoke;
+    border: 0.5rem solid rgb(255, 58, 91);
     margin: 0.5rem;
     border-radius: 0.6rem;
-    background-color: rgb(255, 58, 91);
+    background-color: whitesmoke;
     padding: 2rem;
 }
 

@@ -1,0 +1,27 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <% if (page == "index") { %>
+        <link rel="stylesheet" href="styles/main.css">
+    <%  } else { %>
+     
+    <link rel="stylesheet" href="styles/common.css">
+    <% } %>
+    <title>MessagingApp</title> 
+</head>
+
+<body>
+    <div class="navbar">
+        <legend><a href="/">MessagingApp</a></legend>
+        <div class="nav-items">
+            <a href="/login">Sign In</a>
+            <a href="/signup">New? Sign Up</a>
+        </div>
+    </div>

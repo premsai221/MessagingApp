@@ -1,0 +1,22 @@
+<%- include("layouts/presigninhead") %> 
+<div class="container">
+    <form action="/auth" method="post">
+        <div class="form-container">
+            <div></div>
+            <div class="form-input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div class="form-input-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div class="form-input-group">
+                <button class="login-submit-btn" type="submit">Submit</button>
+            </div>
+
+        </div>
+        <br>
+    </form>
+</div>
+<%- include("layouts/presigninfoot") %>
