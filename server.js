@@ -19,10 +19,14 @@ app.get("/login", (req, res) => {
   res.render("login", {page:"login"});
 });
 
-app.post("/auth", (req, res) => {
+app.post("/login", (req, res) => {
   console.log(req.body.username);
   console.log(req.body.password);
   res.redirect('/login');
+});
+
+app.get("/signup", (req, res) => {
+  res.render("signup", {page:"signup"});
 });
 
 app.listen(3000);
