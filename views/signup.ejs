@@ -1,23 +1,21 @@
-<%- include("layouts/presigninhead") %> 
+<%- include("layouts/presigninhead") %>
 <div class="container">
-    <form action="/login" method="post">
+    <form action="/signup" method="post">
         <div class="form-container">
             <div class="form-header">Please fill in your crendentials</div>
-            <!-- <div class="form-input-group">
-                <label for="email">Email ID</label>
-                <input type="email" id="email" name="email">
-            </div> -->
             <div class="form-input-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username">
+                <input type="email" id="email" name="email" placeholder="Email">
             </div>
             <div class="form-input-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password">
+                <input type="text" id="username" name="username" placeholder="Username">
             </div>
             <div class="form-input-group">
-                <button class="login-submit-btn" type="submit">Submit</button>
+                <input type="password" name="password" id="password" placeholder="Password">
             </div>
+            <div class="form-input-group">
+                <input type="password" name="repassword" id="repassword" placeholder="Re-type Password">
+            </div>
+                <button class="submit-btn" type="submit">Submit</button>
 
         </div>
         <br>

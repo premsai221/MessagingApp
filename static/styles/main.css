@@ -1,64 +1,16 @@
 /* rgb(53 51 52) */
 
 body {
-    margin: 0;
-    border: 0;
-    color: white;
     background-image: url("../images/bg-pic-1.jpg");
     background-size: 100%;
     background-attachment: fixed;
     background-position: center;
+    color: white;
 }
 
 .full-container {
     position: relative;
     overflow-wrap: normal;
-}
-
-a {
-    text-decoration: none;
-    color: white;
-}
-
-.navbar {
-    display: flex;
-    font-family: 'Montserrat', sans-serif;
-    padding: 0.125rem 0.25rem;
-    background-color: rgb(255, 58, 91);
-    align-items: center;
-    height: 2.6rem;
-}
-
-.navbar>legend {
-    font-weight: 700;
-    font-size: 1.5rem;
-}
-
-.nav-items {
-    margin-left: auto;
-    display: flex;
-    font-weight: 600;
-    align-items: center;
-    justify-self: end;
-    font-size: 1.125rem;
-}
-
-.nav-items>a {
-    padding: 0.4rem;
-    margin-right: 0.3rem;
-    /* margin-top: 0.125rem; */
-    /* border: 0.5rem solid rgb(255, 58, 91); */
-    color: rgb(255, 58, 91);
-    background-color: white;
-    border-radius: 0.5rem;
-}
-
-.nav-items>a:hover {
-    padding: 0.2rem;
-    border: 0.2rem solid white;
-    color: white;
-    background-color: rgb(255, 58, 91);
-    border-radius: 0.5rem;
 }
 
 .container {
@@ -77,7 +29,7 @@ a {
     align-items: center;
     border: 0.5rem solid rgb(255, 58, 91);
     margin: 0.5rem;
-    border-radius: 0.6rem;
+    border-radius: 1.4rem;
     background-color: whitesmoke;
     padding: 2rem;
 }
