@@ -3,7 +3,7 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const parser = require("body-parser");
 const mainRouter = require("./routes/index");
-const chatRouter = require("./routes/chat");
+const {chatRouter, io} = require("./routes/chat");
 const mongoose = require("mongoose");
 
 mongoose.connect("mongodb://localhost:27017/usersDB", {useNewUrlParser: true}, () => {
@@ -11,6 +11,7 @@ mongoose.connect("mongodb://localhost:27017/usersDB", {useNewUrlParser: true}, (
 });
 
 const app = express();
+
 
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views")
@@ -21,5 +22,5 @@ app.use(cookieParser());
 app.use(mainRouter);
 app.use("/chat", chatRouter);
 
-
+io.listen(5999);
 app.listen(3000);

@@ -1,5 +1,7 @@
 const express = require("express");
+const { cookieJWTAuth, socketJWTAuth } = require("../middlewares/cookieJWTAuth");
 const User = require("../models/User");
+const Frnd = require("../models/Friends");
 const jwt =  require("jsonwebtoken");
 const dotenv = require('dotenv');
 
@@ -7,7 +9,7 @@ dotenv.config();
 
 const router = express.Router();
 
-router.get('/', function (req, res) {
+router.get('/',function (req, res) {
     res.render("index", { page: "index" });
 });
 
@@ -15,10 +17,27 @@ router.get("/login", (req, res) => {
     res.render("login", { page: "login" });
 });
 
-router.post("/login", (req, res) => {
-    console.log(req.body.username);
-    console.log(req.body.password);
-    res.redirect('/login');
+router.post("/login", async (req, res) => {
+    if (req.body.username && req.body.password)
+    {
+        const user = await User.findOne({username:req.body.username});
+        if (user && !(user.online) && User.validPassword(req.body.password, user.password))
+        {
+            const token = jwt.sign({username:user.username}, process.env.TOKEN_SECRET, { expiresIn: "1h" });
+            res.cookie("token", token, {
+                httpOnly:true,
+                secure:true,
+                // signed:true
+            });
+            res.redirect("/chat");
+        }
+        else{
+            res.redirect('/login');
+        }
+    }
+    else{
+        res.redirect('/login');
+    }
 });
 
 router.get("/signup", (req, res) => {
@@ -48,10 +67,11 @@ router.post("/signup", async (req, res) => {
     else if (name && email && rePassword && password)
     {
         const pass = await User.generateHash(password);
-        console.log(pass);
-        const newUser = new User({username: name, email:email, password:pass})
+        const newUser = new User({username: name, email:email, password:pass, online:true})
+        const frndList = new Frnd({username: name, friends:[]});
         const token = jwt.sign({username:name}, process.env.TOKEN_SECRET, { expiresIn: "1h" });
         await newUser.save();
+        await frndList.save();
         res.cookie("token", token, {
             httpOnly:true,
             secure:true,
@@ -61,6 +81,9 @@ router.post("/signup", async (req, res) => {
     }
 });
 
-
+router.get("/logout", cookieJWTAuth, async (req, res) => {
+    res.clearCookie("token");
+    res.send("<h2>Thank You</h2>")
+});
 
 module.exports = router;

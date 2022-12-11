@@ -1,0 +1,10 @@
+.three-dots {
+    height: max-content;
+    width: min-content;
+    display: inline;
+}
+
+li {
+    margin: 0;
+    height: 14px;
+}

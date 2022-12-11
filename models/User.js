@@ -6,10 +6,13 @@ const userSchema = new mongoose.Schema({
     username: String,
     email: String,
     password: String,
-    // online: Boolean,
+    online: {
+        type: Boolean,
+        default: false
+    },
     socketId: {
-        type: mongoose.ObjectId,
-        default: undefined
+        type: String,
+        default: null
     }
 });
 
@@ -17,8 +20,8 @@ userSchema.statics.generateHash = function (password) {
     return bcrypt.hash(password, saltRounds);
 };
 
-userSchema.statics.validPassword = function (password) {
-    return bcrypt.compare(myPlaintextPassword, hash, function(err, result) {
+userSchema.statics.validPassword = async function (password, hash) {
+    return await bcrypt.compare(password, hash, function(err, result) {
         return result;
     });
 };
