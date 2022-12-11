@@ -33,13 +33,13 @@ friends.forEach(userCard => {
     userCard.addEventListener("click", () => {
         if (lastSelected)
         {
-            lastSelected.style.backgroundColor = "#ff99aa";
+            lastSelected.style.backgroundColor = null;
             lastSelected.style.borderRadius = null;
         }
         chatLoad.style.display = "block";
         lastSelected = userCard;
         userCard.style.backgroundColor = "#ff3a5bb8";
-        userCard.style.borderRadius = "9px";
+        userCard.style.borderRadius = "12px";
         const imgDiv = userCard.querySelector(".new-msg-icon");
         imgDiv.style.display = "none";
         curReceiver = userCard.id;
@@ -88,10 +88,13 @@ addFrndBut.addEventListener("click", () => {
 })
 
 sendButton.addEventListener("click", ()=>{
-    const msg = textInput.value;
+    var msg = String(textInput.value);
+
     textInput.value = "";
     if (msg)
-    {
+    {   
+        msg = msg.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\"", "&quot;");
+        console.log(msg);
         msgObj = new msgTemplate(username, curReceiver, msg, new Date());
         if (socket.emit("send-msg", msgObj))
         {
@@ -102,7 +105,7 @@ sendButton.addEventListener("click", ()=>{
                 sidebar.insertBefore(onTopElem ,sidebar.firstChild)
             }
             const time = msgObj.timeSent.toISOString().replace("T", " ").slice(0, 19);
-            chat_box.innerHTML += "<div class=\"sent-msg\">" + msgObj.msg + "<div class=\"time-text\">" + time + "</div></div>";
+            chat_box.innerHTML += "<div class=\"sent-msg\"><pre class=\"pre-format\">" + msgObj.msg + "</pre><div class=\"time-text\">" + time + "</div></div>";
             chat_box.scrollTop = chat_box.scrollHeight - chat_box.clientHeight;
         }
     }
@@ -127,7 +130,7 @@ socket.on("add-friend", (name) => {
         chatLoad.style.display = "block";
         lastSelected = userCard;
         userCard.style.backgroundColor = "#ff3a5bb8";
-        userCard.style.borderRadius = "9px";
+        userCard.style.borderRadius = "12px";
         const imgDiv = userCard.querySelector(".new-msg-icon");
         imgDiv.style.display = "none";
         curReceiver = userCard.id;
@@ -145,10 +148,10 @@ socket.on("user-msgs", (msgObj)=>{
             const time = msg.timeSent.replace("T", " ").slice(0, 19);
             if (msg.from === username)
             {
-                msgHtml += "<div class=\"sent-msg\">" + msg.msg + "<div class=\"time-text\">" + time + "</div></div>";
+                msgHtml += "<div class=\"sent-msg\"><pre class=\"pre-format\">" + msg.msg + "</pre><div class=\"time-text\">" + time + "</div></div>";
             }
             else {
-                msgHtml += "<div class=\"rec-msg\">" + msg.msg + "<div class=\"time-text\">" + time + "</div></div>";
+                msgHtml += "<div class=\"rec-msg\"><pre class=\"pre-format\">" + msg.msg + "</pre><div class=\"time-text\">" + time + "</div></div>";
             }
         })
         chat_box.innerHTML = msgHtml;
@@ -176,4 +179,4 @@ socket.on("new-msg", (msgObj) => {
     }
 })
 
-socket.on("disconnect", )
+// socket.on("disconnect", )
