@@ -94,7 +94,6 @@ sendButton.addEventListener("click", ()=>{
     if (msg)
     {   
         msg = msg.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\"", "&quot;");
-        console.log(msg);
         msgObj = new msgTemplate(username, curReceiver, msg, new Date());
         if (socket.emit("send-msg", msgObj))
         {
